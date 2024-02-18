@@ -13,13 +13,13 @@ The site consists of two key elements:
 ## Screenshots
 
 ### Start State
-![Tap State - Start](./image/screenshots/tap-state-start.png)
+![Tap State - Start](./images/screenshots/tap-state-start.png)
 
 ### Cold State
-![Tap State - Cold](./image/screenshots/tap-state-cold.png)
+![Tap State - Cold](./images/screenshots/tap-state-cold.png)
 
 ### Random State
-![Tap State - Random](./image/screenshots/tap-state-random.png)
+![Tap State - Random](./images/screenshots/tap-state-random.png)
 
 ## Contact
 
