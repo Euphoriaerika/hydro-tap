@@ -1,0 +1,108 @@
+:root {
+  --black: #2c3040;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+/* TAP SECTION */
+
+/* tybe */
+.tube {
+  height: 40vh;
+  width: 8vw;
+  background: rgb(44, 48, 64);
+  background: linear-gradient(
+    90deg,
+    rgba(44, 48, 64, 1) 0%,
+    rgba(118, 130, 171, 1) 20%,
+    rgba(175, 193, 255, 1) 50%,
+    rgba(124, 137, 181, 1) 80%,
+    rgba(44, 48, 64, 1) 100%
+  );
+
+  position: absolute;
+  top: 0;
+}
+
+#left-tube {
+  left: 28vw;
+}
+
+#right-tube {
+  right: 28vw;
+}
+
+.commutator {
+  width: 100%;
+  height: 20px;
+  background-color: var(--black);
+
+  position: absolute;
+  top: 50%;
+
+  transform: rotate(90deg);
+}
+
+/* tap */
+#tap {
+  width: 44vw;
+  height: 8vw;
+  background: var(--black);
+  background: linear-gradient(
+    90deg,
+    rgba(44, 48, 64, 1) 0%,
+    rgba(118, 130, 171, 1) 50%,
+    rgba(44, 48, 64, 1) 100%
+  );
+  border-radius: 0 0 10px 10px;
+
+  position: absolute;
+  top: 40vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#lever {
+  width: 8vw;
+  height: 40vh;
+
+  position: absolute;
+  left: calc(50% - 4vw);
+  transform-origin: 50% 4vw;
+
+  background: var(--black);
+  border-radius: 24% 24% 50% 50%;
+}
+
+/* MENU SECTION */
+
+#menu {
+  border: 1.2px solid var(--black);
+  border-radius: 8px;
+
+  padding: 16px;
+  width: 24vw;
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+#menu h1 {
+  text-align: center;
+}
+
+.stat {
+  list-style-type: none;
+}
+
+.stat li {
+  margin-top: 16px;
+}
