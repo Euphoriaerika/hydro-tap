@@ -33,5 +33,34 @@ function updateRotationAngles() {
 // Call the function to set initial values
 updateRotationAngles();
 
-// Event handler for mouse movement on the lever element
-leverElement.addEventListener("mousemove", updateRotationAngles);
+
+// Variable to track whether the mouse button is currently pressed
+var isMouseDown = false;
+
+// Adding event handlers
+leverElement.addEventListener("mousedown", function (event) {
+  isMouseDown = true;
+  updateRotationAngles(event);
+
+  // Add event listeners at the document level for mouse movement and release
+  document.addEventListener("mousemove", mouseMoveHandler);
+  document.addEventListener("mouseup", mouseUpHandler);
+});
+
+// Event handler function for mouse movement
+function mouseMoveHandler(event) {
+  if (isMouseDown) {
+    updateRotationAngles(event);
+  }
+}
+
+// Event handler function for mouse release
+function mouseUpHandler() {
+  if (isMouseDown) {
+    isMouseDown = false;
+
+    // Remove event listeners at the document level for mouse movement and release
+    document.removeEventListener("mousemove", mouseMoveHandler);
+    document.removeEventListener("mouseup", mouseUpHandler);
+  }
+}
