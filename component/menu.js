@@ -70,3 +70,36 @@ leverElement.addEventListener("mousedown", function (event) {
   document.addEventListener("mousemove", mouseMoveHandler);
   document.addEventListener("mouseup", mouseUpHandler);
 });
+
+// Опрацьовуйте подію click на кнопці
+document.getElementById("updateButton").addEventListener("click", function () {
+  // Викликайте функцію updateTemperature при натисканні на кнопку
+  let temp = -(getRotationAngle(leverElement) / 90) * 45 + 45;
+  updateTemperature(temp); // Замініть 25 на потрібне значення температури
+});
+
+const updateIndicators = (addAngle) => {
+  let lever = document.getElementById("lever");
+  let angle = getRotationAngle(lever) + addAngle;
+  console.log(angle);
+  lever.style.transform = `rotate(${angle}deg)`;
+};
+
+function updateTemperature(temperature) {
+  fetch("http://127.0.0.1:5000/update", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ temperature: temperature }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Response:", data);
+      // Оновлюй індикатори на екрані з отриманими даними
+      updateIndicators(data.angle);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
