@@ -1,8 +1,8 @@
 :root {
-  --first-color: #b5c0d0;
-  --second-color: #ccd3ca;
-  --third-color: #f5e8dd;
-  --fourth-color: #eed3d9;
+  --first-color: #272829;
+  --second-color: #61677a;
+  --third-color: #d8d9da;
+  --fourth-color: #fff6e0;
 }
 
 * {
@@ -14,6 +14,11 @@
 
 html {
   font-size: 62.5%;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 body {
