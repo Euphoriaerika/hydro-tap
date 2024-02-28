@@ -1,13 +1,18 @@
+const degToRad = (degAngle) =>{
+  return degAngle * (Math.PI / 180)
+}
+
 // Update the indicators based on the given angle increment
 const updateIndicators = (addAngle) => {
   let angle = getRotationAngle(leverElement) + addAngle;
   // console.log(angle);
-  leverElement.style.transform = `rotate(${angle}deg)`;
+  updateTapAngle(degToRad(angle));
 };
 
 // Update the temperature by sending a POST request to the server
 const updateTemperature = (temperature) => {
-  fetch("http://127.0.0.1:5000/update", { // change for your server
+  fetch("http://127.0.0.1:5000/update", {
+    // change for your server
     method: "POST",
     headers: {
       "Content-Type": "application/json",

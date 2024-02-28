@@ -8,6 +8,21 @@ let isDragging = false;
 let initialAngle = 0;
 let center, rect;
 
+
+const calculateLeftComm = (angle) =>{
+  return (angle + Math.PI / 2) / 2;
+}
+
+const calculateRightComm = (angle) =>{
+  return (angle - Math.PI / 2) / 2;
+}
+
+const updateTapAngle = (angle) =>{
+  lever.style.transform = `rotate(${angle}rad)`;
+  leftComm.style.transform = `rotate(${calculateLeftComm(angle)}rad)`;
+  rightComm.style.transform = `rotate(${calculateRightComm(angle)}rad)`;
+}
+
 // Event listener for mouse down on the lever
 lever.addEventListener("mousedown", (e) => {
   // Set dragging state to true
@@ -49,14 +64,8 @@ document.addEventListener("mousemove", (e) => {
         : Math.PI;
     rotation -= (Math.PI * 3) / 2;
 
-    // Calculate rotation angles for left and right components
-    const leftCommRotation = (rotation + Math.PI / 2) / 2;
-    const rightCommRotation = (rotation - Math.PI / 2) / 2;
-
     // Apply transformations to elements based on the calculated angles
-    lever.style.transform = `rotate(${rotation}rad)`;
-    leftComm.style.transform = `rotate(${leftCommRotation}rad)`;
-    rightComm.style.transform = `rotate(${rightCommRotation}rad)`;
+    updateTapAngle(rotation)
   }
 });
 
