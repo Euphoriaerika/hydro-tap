@@ -14,38 +14,60 @@ const angle2Temp = (angle) => {
   return -(angle / 90) * 45 + 45;
 };
 
+// Function to create menu indicators based on the given count
 const createMenuIndicator = (count) => {
   // Select the container element with the class "stat"
-  var statContainer = document.querySelector(".stat");
+  const statContainer = document.querySelector(".stat");
 
   // Check if there are existing <li> elements, create them if not
   if (!statContainer.querySelector("li")) {
-    for (var i = 0; i < count; i++) {
-      var liElement = document.createElement("li");
+    for (let i = 0; i < count; i++) {
+      // Create <li> element
+      const liElement = document.createElement("li");
       statContainer.appendChild(liElement);
+
+      // Create <p> element for title
+      const liTitle = document.createElement("p");
+      liTitle.className = "menu-el-title";
+      liElement.appendChild(liTitle);
+
+      // Create <p> element for date
+      const liDate = document.createElement("p");
+      liDate.className = "menu-el-data";
+      liElement.appendChild(liDate);
     }
   }
 };
 
-// Event handler for mouse movement
+// Function to update menu indicators with relevant data
 const updateMenuIndicator = () => {
-  // Changed to select all <li> elements with the class "stat"
-  var menuItems = document.querySelectorAll(".stat li");
+  // Select all <li> elements with the class "stat" and their corresponding title and data elements
+  const menuTitles = document.querySelectorAll(".stat li .menu-el-title");
+  const menuData = document.querySelectorAll(".stat li .menu-el-data");
 
-  // Update values for each <li> element with the class "stat"
-  menuItems[0].textContent =
-    "Lever angle: " + getRotationAngle(leverElement) + " degrees";
-  menuItems[1].textContent =
-    "Temperature: " + (-(getRotationAngle(leverElement) / 90) * 45 + 45) + " C";
-  menuItems[2].textContent =
-    "LeftComm angle: " + getRotationAngle(leftCommElement) + " degrees";
-  menuItems[3].textContent =
-    "RightComm angle: " + getRotationAngle(rightCommElement) + " degrees";
+  // Data for menu indicators
+  const menuEl = {
+    "Lever angle: ": getRotationAngle(leverElement) + " degrees",
+    "Temperature: ": -(getRotationAngle(leverElement) / 90) * 45 + 45 + " C",
+    "LeftComm angle: ": getRotationAngle(leftCommElement) + " degrees",
+    "RightComm angle: ": getRotationAngle(rightCommElement) + " degrees",
+  };
+
+  // Iterate through menuEl and update titles and data
+  let count = 0;
+  for (const key in menuEl) {
+    menuTitles[count].textContent = key;
+    menuData[count].textContent = menuEl[key];
+    count += 1;
+  }
 };
 
 // Call the function to set initial values
 createMenuIndicator(4);
+
+// Call the function to update menu indicators with relevant data
 updateMenuIndicator();
+
 
 //--- UPDATE INDICATOR, WHEN MOUSEMOVE ---//
 
